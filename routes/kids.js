@@ -14,12 +14,12 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { nome, cognome, dataDiNascita, sezione, allergie } = req.body;
+  const { nome, cognome, dataNascita, sezione, allergie } = req.body;
 
   const kid = new Kid({
     nome,
     cognome,
-    dataDiNascita,
+    dataNascita,
     sezione,
     allergie,
   });
@@ -58,7 +58,7 @@ router.delete("/:kidId", async (req, res) => {
 });
 
 router.put("/:kidId", async (req, res) => {
-  // const { nome, cognome, dataDiNascita, sezione, allergie } = req.body;
+  
   const filter = req.params.kidId;
   const updatedKid = req.body;
 

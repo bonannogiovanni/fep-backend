@@ -8,11 +8,11 @@ router.post("/", async (req, res) => {
 
   try {
     const foundUser = await User.findOne({ username, password });
-    console.log(foundUser);
-    res.json({ isAthenticated: foundUser ? true : false });
+    
+    res.json({ isAuthenticated: foundUser ? true : false });
   } catch (err) {
     console.log(err);
-    res.json({ isAthenticated: false });
+    res.json({ isAuthenticated: false });
   }
 });
 
