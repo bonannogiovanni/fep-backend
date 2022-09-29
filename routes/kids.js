@@ -14,15 +14,10 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { nome, cognome, dataNascita, sezione, allergie } = req.body;
+  const { _id, ...newKid } = req.body;
+  //const { nome, cognome, dataNascita, sezione, allergie } = req.body;
 
-  const kid = new Kid({
-    nome,
-    cognome,
-    dataNascita,
-    sezione,
-    allergie,
-  });
+  const kid = new Kid(newKid);
 
   try {
     const savedKid = await kid.save();
@@ -58,13 +53,13 @@ router.delete("/:kidId", async (req, res) => {
 });
 
 router.put("/:kidId", async (req, res) => {
-  
-  const filter = req.params.kidId;
-  const updatedKid = req.body;
+  const filter = { _id: req.params.kidId };
+ 
+  const { _id, ...updatedKid } = req.body;
 
   try {
     const modifiedKid = await Kid.findOneAndUpdate(filter, updatedKid, {
-      new: true
+      new: true,
     });
     res.json(modifiedKid);
   } catch (err) {

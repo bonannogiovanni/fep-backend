@@ -11,91 +11,98 @@ const KidSchema = mongoose.Schema({
   },
   dataNascita: {
     type: Date,
-    required: true,
+    required: false,
   },
   luogoNascita: {
     type: String,
-    required: true,
+    required: false,
   },
   cf: {
     type: String,
-    required: true,
+    required: false,
   },
   indirizzo: {
     type: String,
-    required: true,
+    required: false,
   },
   sezione: {
     type: String,
-    required: true,
+    required: false,
   },
   nomePadre: {
     type: String,
-    required: true,
+    required: false,
   },
   telefonoPadre: {
     type: String,
-    required: true,
+    required: false,
   },
   cfPadre: {
     type: String,
-    required: true,
+    required: false,
   },
   emailPadre: {
     type: String,
-    required: true,
+    required: false,
   },
   nomeMadre: {
     type: String,
-    required: true,
+    required: false,
   },
   telefonoMadre: {
     type: String,
-    required: true,
+    required: false,
   },
   cfMadre: {
     type: String,
-    required: true,
+    required: false,
   },
   emailMadre: {
     type: String,
-    required: true,
+    required: false,
   },
   altriRecapiti: {
     type: String,
-    required: true,
+    required: false,
   },
   allergie: {
     type: String,
-    required: true,
+    required: false,
   },
   iscrizione: {
     type: Number,
-    required: true,
+    required: false,
+    default: 0,
   },
   bolliFatture: {
     type: Number,
-    required: true,
+    required: false,
+    default: 0,
   },
   speseVarie: {
     type: Number,
-    required: true,
+    required: false,
+    default: 0,
   },
   attivita: {
     type: Number,
-    required: true,
+    required: false,
+    default: 0,
   },
   rettaMensile: {
     type: Number,
-    required: true,
+    required: false,
+    default: 0,
   },
   prescuola: {
     type: Number,
-    required: true,
+    required: false,
+    default: 0,
   },
   altriServizi: {
     type: Number,
-    required: true,
+    required: false,
+    default: 0,
   },
 });
 
