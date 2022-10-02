@@ -28,6 +28,8 @@ mongoose.connect(
   }
 );
 
-app.listen(3000, () => {
-  console.log("REST Server started!" + " http://localhost:3000");
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log("REST Server started on port " + PORT);
 });
