@@ -1,9 +1,10 @@
 const express = require("express");
+const authenticateToken = require("../middleware/authenticateToken");
 
 const router = express.Router();
 const Kid = require("../models/Kid");
 
-router.get("/", async (req, res) => {
+router.get("/", authenticateToken, async (req, res) => {
   try {
     const kids = await Kid.find();
     res.json(kids);
@@ -13,10 +14,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", authenticateToken, async (req, res) => {
   const { _id, ...newKid } = req.body;
-  //const { nome, cognome, dataNascita, sezione, allergie } = req.body;
-
+ 
   const kid = new Kid(newKid);
 
   try {
@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/:kidId", async (req, res) => {
+router.get("/:kidId", authenticateToken, async (req, res) => {
   const { kidId } = req.params;
 
   try {
@@ -40,7 +40,7 @@ router.get("/:kidId", async (req, res) => {
   }
 });
 
-router.delete("/:kidId", async (req, res) => {
+router.delete("/:kidId", authenticateToken, async (req, res) => {
   const { kidId } = req.params;
 
   try {
@@ -52,15 +52,16 @@ router.delete("/:kidId", async (req, res) => {
   }
 });
 
-router.put("/:kidId", async (req, res) => {
+router.put("/:kidId", authenticateToken, async (req, res) => {
   const filter = { _id: req.params.kidId };
- 
+
   const { _id, ...updatedKid } = req.body;
 
   try {
     const modifiedKid = await Kid.findOneAndUpdate(filter, updatedKid, {
       new: true,
     });
+
     res.json(modifiedKid);
   } catch (err) {
     console.log(err);

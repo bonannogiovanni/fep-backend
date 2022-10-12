@@ -104,6 +104,10 @@ const KidSchema = mongoose.Schema({
     required: false,
     default: 0,
   },
+  note: {
+    type: String,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("Kids", KidSchema);
