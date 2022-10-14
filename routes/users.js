@@ -1,10 +1,9 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
 const router = express.Router();
 const User = require("../models/User");
-
-console.log(process.env.JWT_EXPIRES);
 
 function generateAccessToken(username) {
   return jwt.sign({ username }, process.env.JWT_PRIVATE_KEY, {

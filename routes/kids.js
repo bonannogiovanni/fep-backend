@@ -16,7 +16,7 @@ router.get("/", authenticateToken, async (req, res) => {
 
 router.post("/", authenticateToken, async (req, res) => {
   const { _id, ...newKid } = req.body;
- 
+
   const kid = new Kid(newKid);
 
   try {

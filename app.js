@@ -23,10 +23,17 @@ app.get("/", (req, res) => {
 mongoose.connect(
   process.env.MONGO_DB_CONNECTION,
   { useNewUrlParser: true },
-  () => {
-    console.log("Connected to DB!");
+  (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Connected to DB!");
+    }
   }
 );
+
+// .then(() => console.log("Connected to DB!"))
+// .catch((e) => console.log(e));
 
 const PORT = process.env.PORT || 8080;
 
